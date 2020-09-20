@@ -51,3 +51,7 @@ is_active: {passcard.is_active}""")
 
 Находится в хранилище:
 {localtime()- localtime(not_leaved.entered_at)}""")
+
+    # Step 11
+    for not_leaved in not_leaved_visits:
+        print(not_leaved.passcard.owner_name)
