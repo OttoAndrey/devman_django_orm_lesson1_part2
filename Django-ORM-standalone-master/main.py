@@ -14,3 +14,10 @@ if __name__ == "__main__":
 
     # Step 2
     print(Passcard.objects.all())
+
+    # Step 3
+    passcard = Passcard.objects.all()[0]
+    print(f"""owner_name: {passcard.owner_name}
+passcode: {passcard.passcode}
+created_at: {passcard.created_at}
+is_active: {passcard.is_active}""")
