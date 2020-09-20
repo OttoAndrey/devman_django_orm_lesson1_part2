@@ -35,3 +35,6 @@ is_active: {passcard.is_active}""")
     active_passcards = Passcard.objects.filter(is_active=True)
     print('Количество пропусков:', Passcard.objects.count())
     print(f'Активных пропусков: {len(active_passcards)}')
+
+    # Step 8
+    print(Visit.objects.all())
