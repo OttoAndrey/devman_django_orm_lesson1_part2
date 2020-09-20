@@ -38,3 +38,7 @@ is_active: {passcard.is_active}""")
 
     # Step 8
     print(Visit.objects.all())
+
+    # Step 9
+    not_leaved_visits = Visit.objects.filter(leaved_at=None)
+    print(not_leaved_visits)
