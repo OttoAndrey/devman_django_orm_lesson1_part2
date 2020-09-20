@@ -1,6 +1,7 @@
 import os
 import sys
 import django
+from django.utils.timezone import localtime
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 django.setup()
@@ -42,3 +43,11 @@ is_active: {passcard.is_active}""")
     # Step 9
     not_leaved_visits = Visit.objects.filter(leaved_at=None)
     print(not_leaved_visits)
+
+    # Step 10
+    for not_leaved in not_leaved_visits:
+        print(f"""Зашёл в хранилище, время по Москве:
+{localtime(not_leaved.entered_at)}
+
+Находится в хранилище:
+{localtime()- localtime(not_leaved.entered_at)}""")
