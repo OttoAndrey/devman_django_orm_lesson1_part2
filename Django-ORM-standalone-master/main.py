@@ -64,3 +64,7 @@ is_active: {passcard.is_active}""")
 
 Находится в хранилище:
 {format_duration(duration)}""")
+
+    # Step 13
+    visits = Visit.objects.filter(passcard__pk=1)
+    print(visits)
