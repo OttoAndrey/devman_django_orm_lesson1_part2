@@ -6,7 +6,7 @@ from django.utils.timezone import localtime
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 django.setup()
 
-from datacenter.models import Passcard, Visit
+from datacenter.models import Passcard, Visit, format_duration
 
 
 if __name__ == "__main__":
@@ -55,3 +55,12 @@ is_active: {passcard.is_active}""")
     # Step 11
     for not_leaved in not_leaved_visits:
         print(not_leaved.passcard.owner_name)
+
+    # Step 12
+    for not_leaved in not_leaved_visits:
+        duration = not_leaved.get_duration()
+        print(f"""Зашёл в хранилище, время по Москве:
+{localtime(not_leaved.entered_at)}
+
+Находится в хранилище:
+{format_duration(duration)}""")
