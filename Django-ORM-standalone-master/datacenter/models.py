@@ -36,3 +36,14 @@ class Visit(models.Model):
     def get_duration(self):
         time = localtime() - localtime(self.entered_at)
         return time.total_seconds()
+
+    def is_long(self, minutes=60):
+        duration = datetime.timedelta(seconds=int(self.get_duration()))
+        limit = datetime.timedelta(minutes=minutes)
+
+        if self.leaved_at is None and duration > limit:
+            return True
+        elif self.leaved_at-self.entered_at > limit:
+            return True
+        else:
+            return False

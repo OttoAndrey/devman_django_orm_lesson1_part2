@@ -68,3 +68,16 @@ is_active: {passcard.is_active}""")
     # Step 13
     visits = Visit.objects.filter(passcard__pk=1)
     print(visits)
+
+    # Step 14
+    gt_ten_minutes = []
+    gt_thousand_minutes = []
+    print(Visit.objects.all().count())
+    for visit in visits:
+        if visit.is_long(10):
+            gt_ten_minutes.append(visit)
+        elif visit.is_long(1000):
+            gt_thousand_minutes.append(visit)
+
+    print(f'Визиты дольше 10 мин {gt_ten_minutes}')
+    print(f'Визиты дольше 1000 мин {gt_thousand_minutes}')
