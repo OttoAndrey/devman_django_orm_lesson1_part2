@@ -44,9 +44,4 @@ class Visit(models.Model):
         duration = datetime.timedelta(seconds=int(self.get_duration()))
         limit = datetime.timedelta(minutes=minutes)
 
-        if self.leaved_at is None and duration > limit:
-            return True
-        elif self.leaved_at-self.entered_at > limit:
-            return True
-        else:
-            return False
+        return duration > limit
